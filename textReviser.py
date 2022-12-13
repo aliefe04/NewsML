@@ -1,4 +1,5 @@
 import nltk
+import pyperclip
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 nltk.download('stopwords')
@@ -11,6 +12,8 @@ def textRev(filename):
     text_tokens = word_tokenize(text)
     tokens_without_sw = [word for word in text_tokens if not word in stopwords]
     open(f"{filename}Rev.txt", "w", encoding="utf-8").write(" ".join(tokens_without_sw))
+    pyperclip.copy(" ".join(tokens_without_sw))
+    print("done")
 
 
 textRev("text")
